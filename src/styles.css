@@ -1,0 +1,102 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.ConnectFourBoard__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  gap: 15px;
+}
+
+.ConnectFourBoard__header {
+  display: flex;
+  align-items: center;
+  height: 6vw;
+  width: 42vw;
+}
+
+.ConnectFourBoard__header .ConnectFourPiece {
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.ConnectFourBoard__header__winner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  border: 1px solid transparent;;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.ConnectFourBoard__board {
+  display: grid;
+  grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw;
+  grid-template-rows: 6vw 6vw 6vw 6vw 6vw 6vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.ConnectFourBoard__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 42vw;
+}
+
+.ConnectFourBoard__footer__reset-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.ConnectFourBoard__footer__reset-button:hover {
+  border-color: #646cff;
+}
+
+.ConnectFourCell__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/cell.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.ConnectFourPiece {
+  height: 4.9vw;
+  width: 4.9vw;
+  border-radius: 50%;
+}
+
+.ConnectFourPiece--black {
+  background-color: #000;
+}
+
+.ConnectFourPiece--red {
+  background-color: #dc3545;
+}
