@@ -38,7 +38,10 @@ export function ConnectFourBoard() {
         <div className="ConnectFourBoard__container">
             <div className="ConnectFourBoard__header">
                 {!winner && (hoveredColumn !== null) && (
-                    <div style={{ marginLeft: `${0.6 + hoveredColumn * 6}vw` }}>
+                    <div style={{
+                        marginLeft: `${0.6 + hoveredColumn * 6}vw`,
+                        transition: 'margin-left 0.3s ease',
+                    }}>
                         <ConnectFourPiece player={currentPlayer} />
                     </div>
                 )}

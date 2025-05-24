@@ -1,4 +1,4 @@
-import {useCallback, useMemo} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ConnectFourPiece, type TPlayer } from './ConnectFourPiece.tsx';
 import { dropPiece, checkWinner } from '../helpers/connectFour.ts';
 import deepClone from '../helpers/deepClone.ts';
@@ -16,6 +16,20 @@ export interface IConnectFourBoardCellProps {
 }
 
 export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
+    const [dropAnimation, setDropAnimation] = useState<boolean>(false);
+
+    const cellValue = useMemo(() => {
+        return props.board[props.rowIndex][props.columnIndex];
+    }, [props.board]);
+
+    useEffect(() => {
+        if (cellValue) {
+            setDropAnimation(true);
+        } else {
+            setDropAnimation(false);
+        }
+    }, [cellValue]);
+
     const onMouseEnter = useCallback(() => {
         props.setHoveredColumn(props.columnIndex);
     }, [props.columnIndex]);
@@ -47,10 +61,6 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
         props.winner,
     ]);
 
-    const cellValue = useMemo(() => {
-        return props.board[props.rowIndex][props.columnIndex];
-    }, [props.board]);
-
     return (
         <div
             className="ConnectFourCell__container"
@@ -59,7 +69,14 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
             onClick={onClick}
         >
             {Boolean(cellValue) && (
-                <ConnectFourPiece player={cellValue as TPlayer} />
+                <div style={{
+                    transform: dropAnimation
+                        ? `translateY(0)`
+                        : `translateY(-${(props.rowIndex + 1) * 6}vw)`,
+                    transition: 'transform 0.5s ease',
+                }}>
+                    <ConnectFourPiece player={cellValue as TPlayer} />
+                </div>
             )}
         </div>
     );
