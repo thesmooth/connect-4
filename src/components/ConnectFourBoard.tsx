@@ -12,6 +12,7 @@ export function ConnectFourBoard() {
     const resetGame = useCallback(() => {
         updateBoard(cleanBoard);
         setWinner(null);
+        setCurrentPlayer('black');
     }, []);
 
     const boardComponents = board.map((row, rowIndex) => {

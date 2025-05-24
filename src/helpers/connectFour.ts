@@ -32,7 +32,7 @@ export const dropPiece = (
 
 export const checkWinner = (
     board: Array<Array<null | TPlayer>>,
-    setWinner: any,
+    setWinner: (player: TPlayer) => void,
 ) => {
     checkHorizontalMatch(board, setWinner);
     checkVerticalMatch(board, setWinner);

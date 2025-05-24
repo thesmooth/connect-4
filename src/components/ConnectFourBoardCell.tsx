@@ -8,7 +8,7 @@ export interface IConnectFourBoardCellProps {
     columnIndex: number;
     rowIndex: number;
     currentPlayer: TPlayer;
-    board: Array<Array<null | TPlayer>>
+    board: Array<Array<null | TPlayer>>;
     setCurrentPlayer: (player: TPlayer) => void;
     setWinner: (player: TPlayer) => void;
     winner: TPlayer | null;
