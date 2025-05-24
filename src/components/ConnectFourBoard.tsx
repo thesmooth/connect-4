@@ -35,7 +35,7 @@ export function ConnectFourBoard() {
     });
 
     return (
-        <div className="ConnectFourBoard__container">
+        <div className="ConnectFourBoard">
             <div className="ConnectFourBoard__header">
                 {!winner && (hoveredColumn !== null) && (
                     <div style={{

@@ -63,17 +63,18 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
 
     return (
         <div
-            className="ConnectFourCell__container"
+            className="ConnectFourCell"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onClick={onClick}
         >
+            <div className="ConnectFourCell__cell"></div>
             {Boolean(cellValue) && (
                 <div style={{
                     transform: dropAnimation
                         ? `translateY(0)`
                         : `translateY(-${(props.rowIndex + 1) * 6}vw)`,
-                    transition: 'transform 0.5s ease',
+                    transition: `transform ${(props.rowIndex + 1)/6}s ease`,
                 }}>
                     <ConnectFourPiece player={cellValue as TPlayer} />
                 </div>
