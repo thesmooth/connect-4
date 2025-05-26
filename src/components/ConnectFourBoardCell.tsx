@@ -30,15 +30,15 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
         }
     }, [cellValue]);
 
-    const onMouseEnter = useCallback(() => {
+    const onCellMouseEnter = useCallback(() => {
         props.setHoveredColumn(props.columnIndex);
     }, [props.columnIndex]);
 
-    const onMouseLeave = useCallback(() => {
+    const onMCellouseLeave = useCallback(() => {
         props.setHoveredColumn(null);
     }, []);
 
-    const onClick = useCallback(() => {
+    const onCellClick = useCallback(() => {
         const {
             board,
             columnIndex,
@@ -64,16 +64,17 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
     return (
         <div
             className="ConnectFourCell"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            onClick={onClick}
+            onMouseEnter={onCellMouseEnter}
+            onMouseLeave={onMCellouseLeave}
+            onClick={onCellClick}
         >
-            <div className="ConnectFourCell__cell"></div>
+            <div className="ConnectFourCell__cell" />
+
             {Boolean(cellValue) && (
                 <div style={{
                     transform: dropAnimation
                         ? `translateY(0)`
-                        : `translateY(-${(props.rowIndex + 1) * 6}vw)`,
+                        : `translateY(-${(props.rowIndex + 1) * 100 + 15}px)`,
                     transition: `transform ${(props.rowIndex + 1)/6}s ease`,
                 }}>
                     <ConnectFourPiece player={cellValue as TPlayer} />

@@ -24,12 +24,8 @@ body {
 .ConnectFourBoard__header {
   display: flex;
   align-items: center;
-  height: 6vw;
-  width: 42vw;
-}
-
-.ConnectFourBoard__header .ConnectFourPiece {
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  height: 100px;
+  width: 700px;
 }
 
 .ConnectFourBoard__header__winner {
@@ -40,7 +36,6 @@ body {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  border: 1px solid transparent;;
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
@@ -48,8 +43,8 @@ body {
 
 .ConnectFourBoard__board {
   display: grid;
-  grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw;
-  grid-template-rows: 6vw 6vw 6vw 6vw 6vw 6vw;
+  grid-template-columns: repeat(7, 100px);
+  grid-template-rows: repeat(6, 100px);
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
@@ -57,13 +52,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 42vw;
+  width: 700px;
 }
 
 .ConnectFourBoard__footer__reset-button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 10px 15px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -74,7 +69,7 @@ body {
 }
 
 .ConnectFourBoard__footer__reset-button:hover {
-  border-color: #646cff;
+  border-color: orange;
 }
 
 .ConnectFourCell {
@@ -96,9 +91,10 @@ body {
 }
 
 .ConnectFourPiece {
-  height: 4.9vw;
-  width: 4.9vw;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .ConnectFourPiece--black {

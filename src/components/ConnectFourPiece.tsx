@@ -6,6 +6,6 @@ export interface IConnectFourPieceProps {
 
 export function ConnectFourPiece(props: IConnectFourPieceProps) {
     return (
-        <div className={`ConnectFourPiece ConnectFourPiece--${props.player}`}></div>
+        <div className={`ConnectFourPiece ConnectFourPiece--${props.player}`} />
     );
 }
