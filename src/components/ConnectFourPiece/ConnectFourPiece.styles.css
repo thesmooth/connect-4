@@ -1,0 +1,14 @@
+.ConnectFourPiece {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.ConnectFourPiece--black {
+    background-color: #000;
+}
+
+.ConnectFourPiece--red {
+    background-color: #dc3545;
+}

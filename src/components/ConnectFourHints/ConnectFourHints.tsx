@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
+import './ConnectFourHints.styles.css';
+
 export function ConnectFourHints({ movesLog }: { movesLog: string }) {
     const { error, data } = useQuery({
         queryKey: ['hints', movesLog],

@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConnectFourPiece, type TPlayer } from './ConnectFourPiece.tsx';
-import { dropPiece, checkWinner } from '../helpers/connectFour.ts';
-import deepClone from '../helpers/deepClone.ts';
+import { ConnectFourPiece, type TPlayer } from '../ConnectFourPiece/ConnectFourPiece.tsx';
+import { dropPiece, checkWinner } from '../../helpers/connectFour.ts';
+import deepClone from '../../helpers/deepClone.ts';
+
+import './ConnectFourBoardCell.styles.css';
 
 export interface IConnectFourBoardCellProps {
     updateBoard: (board: (null | TPlayer)[][]) => void;
@@ -76,12 +78,12 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
 
     return (
         <div
-            className="ConnectFourCell"
+            className="ConnectFourBoardCell"
             onMouseEnter={onCellMouseEnter}
             onMouseLeave={onCellMouseLeave}
             onClick={onCellClick}
         >
-            <div className="ConnectFourCell__cell" />
+            <div className="ConnectFourBoardCell__cell" />
 
             {Boolean(cellValue) && (
                 <div style={{

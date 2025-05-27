@@ -1,3 +1,5 @@
+import './ConnectFourPiece.styles.css';
+
 export type TPlayer = 'black' | 'red';
 
 export interface IConnectFourPieceProps {

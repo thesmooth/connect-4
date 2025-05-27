@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
-import { ConnectFourBoardCell } from './ConnectFourBoardCell.tsx';
-import { ConnectFourPiece, type TPlayer } from './ConnectFourPiece.tsx';
-import { cleanBoard } from '../helpers/connectFour.ts';
-import { ConnectFourHints } from './ConnectFourHints.tsx';
+import { ConnectFourBoardCell } from '../ConnectFourBoardCell/ConnectFourBoardCell.tsx';
+import { ConnectFourPiece, type TPlayer } from '../ConnectFourPiece/ConnectFourPiece.tsx';
+import { cleanBoard } from '../../helpers/connectFour.ts';
+import { ConnectFourHints } from '../ConnectFourHints/ConnectFourHints.tsx';
+
+import './ConnectFourBoard.styles.css';
 
 export function ConnectFourBoard() {
     const [board, updateBoard] = useState<(null | TPlayer)[][]>(cleanBoard);

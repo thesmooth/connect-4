@@ -1,7 +1,7 @@
 import { assert, test } from 'vitest'
 import { checkWinner, cleanBoard, dropPiece } from './connectFour.ts';
 import deepClone from './deepClone.ts';
-import type { TPlayer } from '../components/ConnectFourPiece.tsx';
+import type { TPlayer } from '../components/ConnectFourPiece/ConnectFourPiece.tsx';
 
 test('"dropPiece" function should update chosen column and swap current player', () => {
     let board: (null | TPlayer)[][] = deepClone(cleanBoard);

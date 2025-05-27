@@ -1,4 +1,4 @@
-import type { TPlayer } from '../components/ConnectFourPiece.tsx';
+import type { TPlayer } from '../components/ConnectFourPiece/ConnectFourPiece.tsx';
 
 export const cleanBoard = [
     [null, null, null, null, null, null, null],
