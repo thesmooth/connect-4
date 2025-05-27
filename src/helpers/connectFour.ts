@@ -14,14 +14,17 @@ const columns = cleanBoard[0].length;
 export const dropPiece = (
     currentPlayer: TPlayer,
     column: number,
-    board: Array<Array<null | TPlayer>>,
-    updateBoard: (board: Array<Array<null | TPlayer>>) => void,
+    board: (null | TPlayer)[][],
+    updateBoard: (board: (null | TPlayer)[][]) => void,
     setCurrentPlayer: (currentPlayer: TPlayer) => void,
+    movesLog: string,
+    updateMovesLog: (movesLog: string) => void,
 ): void => {
     for (let row = 5; row >= 0; --row) {
         if (board[row][column] === null) {
             board[row][column] = currentPlayer;
             updateBoard(board);
+            updateMovesLog(`${movesLog}${column + 1}`);
 
             setCurrentPlayer(currentPlayer === 'black' ? 'red' : 'black');
 
@@ -31,7 +34,7 @@ export const dropPiece = (
 }
 
 export const checkWinner = (
-    board: Array<Array<null | TPlayer>>,
+    board: (null | TPlayer)[][],
     setWinner: (player: TPlayer) => void,
 ) => {
     checkHorizontalMatch(board, setWinner);
@@ -41,7 +44,7 @@ export const checkWinner = (
 }
 
 const checkHorizontalMatch = (
-    board: Array<Array<null | TPlayer>>,
+    board: (null | TPlayer)[][],
     setWinner: (player: TPlayer) => void,
 ) => {
     for (let row = 0; row < rows; row++) {
@@ -60,7 +63,7 @@ const checkHorizontalMatch = (
 }
 
 const checkVerticalMatch = (
-    board: Array<Array<null | TPlayer>>,
+    board: (null | TPlayer)[][],
     setWinner: (player: TPlayer) => void,
 ) => {
     for (let column = 0; column < columns; column++) {
@@ -79,7 +82,7 @@ const checkVerticalMatch = (
 }
 
 const checkDiagonalMatch = (
-    board: Array<Array<null | TPlayer>>,
+    board: (null | TPlayer)[][],
     setWinner: (player: TPlayer) => void,
 ) => {
     for (let row = 0; row < rows - 3; row++) {
@@ -98,7 +101,7 @@ const checkDiagonalMatch = (
 }
 
 const checkAntiDiagonalMatch = (
-    board: Array<Array<null | TPlayer>>,
+    board: (null | TPlayer)[][],
     setWinner: (player: TPlayer) => void,
 ) => {
     for (let row = 3; row < rows; row++) {

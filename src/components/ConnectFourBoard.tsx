@@ -2,15 +2,18 @@ import { useCallback, useState } from 'react';
 import { ConnectFourBoardCell } from './ConnectFourBoardCell.tsx';
 import { ConnectFourPiece, type TPlayer } from './ConnectFourPiece.tsx';
 import { cleanBoard } from '../helpers/connectFour.ts';
+import { ConnectFourHints } from './ConnectFourHints.tsx';
 
 export function ConnectFourBoard() {
-    const [board, updateBoard] = useState<Array<Array<null | TPlayer>>>(cleanBoard);
+    const [board, updateBoard] = useState<(null | TPlayer)[][]>(cleanBoard);
+    const [movesLog, updateMovesLog] = useState<string>('');
     const [currentPlayer, setCurrentPlayer] = useState<TPlayer>('black');
     const [winner, setWinner] = useState<TPlayer | null>(null);
     const [hoveredColumn, setHoveredColumn] = useState<null | number>(null);
 
     const resetGame = useCallback(() => {
         updateBoard(cleanBoard);
+        updateMovesLog('');
         setWinner(null);
         setCurrentPlayer('black');
     }, []);
@@ -28,6 +31,8 @@ export function ConnectFourBoard() {
                     setCurrentPlayer={setCurrentPlayer}
                     setWinner={setWinner}
                     winner={winner}
+                    movesLog={movesLog}
+                    updateMovesLog={updateMovesLog}
                     setHoveredColumn={setHoveredColumn}
                 />
             );
@@ -54,6 +59,8 @@ export function ConnectFourBoard() {
             </div>
 
             <div className="ConnectFourBoard__board">{boardComponents}</div>
+
+            <ConnectFourHints movesLog={movesLog} />
 
             <div className="ConnectFourBoard__footer">
                 <button className="ConnectFourBoard__footer__reset-button" onClick={resetGame}>

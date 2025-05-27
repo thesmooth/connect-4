@@ -4,15 +4,17 @@ import deepClone from './deepClone.ts';
 import type { TPlayer } from '../components/ConnectFourPiece.tsx';
 
 test('"dropPiece" function should update chosen column and swap current player', () => {
-    let board: Array<Array<null | TPlayer>> = deepClone(cleanBoard);
+    let board: (null | TPlayer)[][] = deepClone(cleanBoard);
     let currentPlayer: TPlayer = 'black';
 
     dropPiece(
         currentPlayer,
         0,
         board,
-        (newBoard: Array<Array<null | TPlayer>>) => { board = newBoard; },
-        (newPlayer: TPlayer) => { currentPlayer = newPlayer; }
+        (newBoard: (null | TPlayer)[][]) => { board = newBoard; },
+        (newPlayer: TPlayer) => { currentPlayer = newPlayer; },
+        '',
+        () => {},
     );
     assert.deepEqual(board, [
         [null, null, null, null, null, null, null],
@@ -27,8 +29,10 @@ test('"dropPiece" function should update chosen column and swap current player',
         currentPlayer,
         3,
         board,
-        (newBoard: Array<Array<null | TPlayer>>) => { board = newBoard; },
-        (newPlayer: TPlayer) => { currentPlayer = newPlayer; }
+        (newBoard: (null | TPlayer)[][]) => { board = newBoard; },
+        (newPlayer: TPlayer) => { currentPlayer = newPlayer; },
+        '',
+        () => {},
     );
     assert.deepEqual(board, [
         [null, null, null, null, null, null, null],
@@ -43,8 +47,10 @@ test('"dropPiece" function should update chosen column and swap current player',
         currentPlayer,
         3,
         board,
-        (newBoard: Array<Array<null | TPlayer>>) => { board = newBoard; },
-        (newPlayer: TPlayer) => { currentPlayer = newPlayer; }
+        (newBoard: (null | TPlayer)[][]) => { board = newBoard; },
+        (newPlayer: TPlayer) => { currentPlayer = newPlayer; },
+        '',
+        () => {},
     );
     assert.deepEqual(board, [
         [null, null, null, null, null, null, null],
@@ -58,7 +64,7 @@ test('"dropPiece" function should update chosen column and swap current player',
 
 test('"checkWinner" function should detect when player wins the game', () => {
     let winner: TPlayer | null = null;
-    let board: Array<Array<null | TPlayer>> = deepClone(cleanBoard);
+    let board: (null | TPlayer)[][] = deepClone(cleanBoard);
 
     checkWinner(
         board,

@@ -4,14 +4,16 @@ import { dropPiece, checkWinner } from '../helpers/connectFour.ts';
 import deepClone from '../helpers/deepClone.ts';
 
 export interface IConnectFourBoardCellProps {
-    updateBoard: (board: Array<Array<null | TPlayer>>) => void;
+    updateBoard: (board: (null | TPlayer)[][]) => void;
     columnIndex: number;
     rowIndex: number;
     currentPlayer: TPlayer;
-    board: Array<Array<null | TPlayer>>;
+    board: (null | TPlayer)[][];
     setCurrentPlayer: (player: TPlayer) => void;
     setWinner: (player: TPlayer) => void;
     winner: TPlayer | null;
+    movesLog: string;
+    updateMovesLog: (moves: string) => void;
     setHoveredColumn: (columnIndex: number | null) => void;
 }
 
@@ -34,7 +36,7 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
         props.setHoveredColumn(props.columnIndex);
     }, [props.columnIndex]);
 
-    const onMCellouseLeave = useCallback(() => {
+    const onCellMouseLeave = useCallback(() => {
         props.setHoveredColumn(null);
     }, []);
 
@@ -47,25 +49,36 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
             updateBoard,
             setCurrentPlayer,
             setWinner,
+            movesLog,
+            updateMovesLog,
         } = props;
 
         if (winner) return;
 
         const newBoard = deepClone(board);
-        dropPiece(currentPlayer, columnIndex, newBoard, updateBoard, setCurrentPlayer);
+        dropPiece(
+            currentPlayer,
+            columnIndex,
+            newBoard,
+            updateBoard,
+            setCurrentPlayer,
+            movesLog,
+            updateMovesLog,
+        );
         checkWinner(newBoard, setWinner);
     }, [
         props.board,
         props.columnIndex,
         props.currentPlayer,
         props.winner,
+        props.movesLog,
     ]);
 
     return (
         <div
             className="ConnectFourCell"
             onMouseEnter={onCellMouseEnter}
-            onMouseLeave={onMCellouseLeave}
+            onMouseLeave={onCellMouseLeave}
             onClick={onCellClick}
         >
             <div className="ConnectFourCell__cell" />
