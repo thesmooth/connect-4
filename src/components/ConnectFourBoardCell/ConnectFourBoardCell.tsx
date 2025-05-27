@@ -89,7 +89,7 @@ export function ConnectFourBoardCell(props: IConnectFourBoardCellProps) {
                 <div style={{
                     transform: dropAnimation
                         ? `translateY(0)`
-                        : `translateY(-${(props.rowIndex + 1) * 100 + 15}px)`,
+                        : `translateY(-${(props.rowIndex + 1) * 100}px)`,
                     transition: `transform ${(props.rowIndex + 1)/6}s ease`,
                 }}>
                     <ConnectFourPiece player={cellValue as TPlayer} />

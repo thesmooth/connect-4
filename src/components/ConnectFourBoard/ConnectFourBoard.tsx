@@ -60,15 +60,15 @@ export function ConnectFourBoard() {
                 )}
             </div>
 
-            <div className="ConnectFourBoard__board">{boardComponents}</div>
-
-            <ConnectFourHints movesLog={movesLog} />
-
-            <div className="ConnectFourBoard__footer">
-                <button className="ConnectFourBoard__footer__reset-button" onClick={resetGame}>
+            <div className="ConnectFourBoard__board">
+                <button className="ConnectFourBoard__reset-button" onClick={resetGame}>
                     Reset game
                 </button>
+
+                {boardComponents}
             </div>
+
+            <ConnectFourHints movesLog={movesLog}/>
         </div>
     );
 }
