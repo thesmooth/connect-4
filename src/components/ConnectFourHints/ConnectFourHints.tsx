@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import './ConnectFourHints.styles.css';
+import {Spinner} from "../Spinner/Spinner.tsx";
 
 export function ConnectFourHints({ movesLog }: { movesLog: string }) {
-    const { error, data } = useQuery({
+    const { isPending, error, data } = useQuery({
         queryKey: ['hints', movesLog],
         queryFn: async () => {
             const res = await fetch(`https://connect4.gamesolver.org/solve?pos=${movesLog}`);
@@ -56,7 +57,7 @@ export function ConnectFourHints({ movesLog }: { movesLog: string }) {
                     key={index}
                     className="ConnectFourHints__score"
                 >
-                    {columnScore}
+                    {isPending ? <Spinner /> : columnScore}
                 </div>
             );
         });
